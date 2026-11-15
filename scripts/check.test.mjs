@@ -97,3 +97,9 @@ test('an icon that does not answer 200 is refused', async () => {
   const reasons = await sourceProblems(ENTRY, { fetch: stub({ ...NPM_OK, 'https://example.com/icon.svg': [404, ''] }) });
   assert.deepEqual(reasons, ['icon https://example.com/icon.svg answered 404, not 200']);
 });
+
+test('since must be a release version that leaves a release', async () => {
+  assert.deepEqual(shapeProblems({ version: 1, plugins: [{ ...ENTRY, since: 'v1' }] }).map(([, r]) => r), ['"since" is not a release version, such as 1.0.0']);
+  assert.deepEqual(await sourceProblems({ ...ENTRY, since: '0.14.0' }, { fetch: stub(NPM_OK) }), []);
+  assert.deepEqual(await sourceProblems({ ...ENTRY, since: '2.0.0' }, { fetch: stub(NPM_OK) }), ['no release on npm is 2.0.0 or newer, so "since" leaves nothing']);
+});

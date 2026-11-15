@@ -7,6 +7,7 @@
       "name": "Agent ACP",
       "description": "Connects any ACP-compatible agent, including Copilot, Codex, Gemini, and custom ACP servers.",
       "source": "@ahpd/agent-acp",
+      "since": "0.14.0",
       "categories": [
         "agent"
       ],
@@ -29,6 +30,7 @@
       "name": "Activepieces connectors",
       "description": "Each installed Activepieces piece is an adapter, and each of its actions is a host tool.",
       "source": "@ahpd/activepieces",
+      "since": "0.14.0",
       "categories": [
         "connector"
       ],
@@ -46,6 +48,7 @@
       "name": "Agent Claude",
       "description": "Claude Code as an agent backend, one record per configuration.",
       "source": "@ahpd/agent-claude",
+      "since": "0.14.0",
       "categories": [
         "agent"
       ],
@@ -63,6 +66,7 @@
       "name": "Agent Cofold",
       "description": "Runs the Cofold agent runtime, providing access to OpenAI-compat api endpoints.",
       "source": "@ahpd/agent-cofold",
+      "since": "0.14.0",
       "categories": [
         "agent"
       ],
@@ -85,6 +89,7 @@
       "name": "Agent pi",
       "description": "Runs the Pi coding agent, embedded in process and served as an agent provider.",
       "source": "@ahpd/agent-pi",
+      "since": "0.14.0",
       "categories": [
         "agent"
       ],
@@ -102,6 +107,7 @@
       "name": "Bot",
       "description": "Creates conversational bots with individual identities, workspaces, and persistent sessions.",
       "source": "@ahpd/bot",
+      "since": "0.14.0",
       "categories": [
         "agent",
         "channel",
@@ -126,6 +132,7 @@
       "name": "Computer",
       "description": "Provides isolated Docker/Container environments for agent sessions, including lifecycle management and tools.",
       "source": "@ahpd/computer",
+      "since": "0.14.0",
       "categories": [
         "channel",
         "tool"
@@ -149,6 +156,7 @@
       "name": "Push",
       "description": "Delivers push notifications to connected devices when agent sessions require user attention.",
       "source": "@ahpd/push",
+      "since": "0.14.0",
       "author": "Softov",
       "license": "MIT",
       "repository": "https://github.com/ahpio/ahpd/tree/main/packages/push",
@@ -168,6 +176,7 @@
       "name": "Tasks",
       "description": "One list of tasks and plans every agent reads and writes.",
       "source": "@ahpd/tasks",
+      "since": "0.14.0",
       "categories": [
         "channel",
         "tool"
@@ -191,6 +200,7 @@
       "name": "Dev Tunnel",
       "description": "A Dev Tunnel that forwards the bound port, so a client reaches the daemon from anywhere.",
       "source": "@ahpd/tunnel-devtunnel",
+      "since": "0.14.0",
       "author": "Softov",
       "license": "MIT",
       "repository": "https://github.com/ahpio/ahpd/tree/main/packages/tunnel-devtunnel",
@@ -210,6 +220,7 @@
       "name": "Webhook",
       "description": "A URL that talks to a bot or fires an automation, with a secret per endpoint.",
       "source": "@ahpd/webhook",
+      "since": "0.14.0",
       "categories": [
         "connector"
       ],
@@ -232,6 +243,7 @@
       "name": "Web",
       "description": "A web UI for an AHP server, as an ahpd plugin or on its own with ahpw serve",
       "source": "@ahpd/web",
+      "since": "0.8.0",
       "author": "Softov",
       "license": "MIT",
       "repository": "https://github.com/ahpio/ahpw"

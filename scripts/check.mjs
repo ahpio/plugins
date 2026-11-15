@@ -22,7 +22,7 @@ export const RELEASE_TAG = /^v(\d+)\.(\d+)\.(\d+)$/;
 export const RELEASE = /^(\d+)\.(\d+)\.(\d+)$/;
 
 const TOP_KEYS = new Set(['$schema', 'version', 'plugins']);
-const KEYS = new Set(['id', 'name', 'description', 'source', 'categories', 'author', 'license', 'repository', 'icons']);
+const KEYS = new Set(['id', 'name', 'description', 'source', 'since', 'categories', 'author', 'license', 'repository', 'icons']);
 const REQUIRED = ['id', 'name', 'description', 'source'];
 const HTTPS = /^https:\/\/\S+$/;
 
@@ -64,6 +64,7 @@ export function shapeProblems(list) {
     if (typeof entry.source === 'string' && sourceKind(entry.source) === undefined) {
       say('"source" is not an npm name or github:<owner>/<repo>; the list takes npm and github: sources only');
     }
+    if (entry.since !== undefined && !(typeof entry.since === 'string' && RELEASE.test(entry.since))) say('"since" is not a release version, such as 1.0.0');
     if (entry.categories !== undefined && (!Array.isArray(entry.categories) || !entry.categories.every((c) => typeof c === 'string' && SLUG.test(c)))) {
       say('"categories" is not a list of slugs');
     }
@@ -117,6 +118,7 @@ export async function sourceProblems(entry, deps = {}) {
       const packument = await answer.json();
       const releases = Object.keys(packument.versions ?? {}).filter((v) => RELEASE.test(v));
       if (releases.length === 0) out.push(`${entry.source} has no release on npm, only prereleases`);
+      else if (entry.since && !releases.some((v) => compare(v, entry.since) >= 0)) out.push(`no release on npm is ${entry.since} or newer, so "since" leaves nothing`);
       if (unscoped(entry.source) !== entry.id) out.push(`"id" is not ${unscoped(entry.source)}, the package name without its scope`);
     }
   }
@@ -131,6 +133,9 @@ export async function sourceProblems(entry, deps = {}) {
       const releases = (await tags.json()).filter((t) => RELEASE_TAG.test(t?.name ?? ''));
       if (releases.length === 0) {
         out.push('has no version tag; push a tag such as v1.0.0, and run the check again');
+      }
+      else if (entry.since && !releases.some((t) => compare(t.name.slice(1), entry.since) >= 0)) {
+        out.push(`no version tag is v${entry.since} or newer, so "since" leaves nothing`);
       }
       else {
         const newest = releases.sort((a, b) => compare(b.name.slice(1), a.name.slice(1)))[0];

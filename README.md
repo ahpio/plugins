@@ -26,13 +26,14 @@ Open a pull request that adds one entry to `plugins` in [plugins.json](plugins.j
 | `name` | yes | The display name, as `ahpd.title` in package.json. At most 60 characters. |
 | `description` | yes | One sentence for the card. At most 200 characters. |
 | `source` | yes | An npm name with no version, or `github:<owner>/<repo>`. |
+| `since` | no | The oldest release to list, such as `1.0.0`. Older releases are left out. |
 | `categories` | no | The same words as `ahpd.categories`, such as `agent`, `connector`, `channel` or `tool`. |
 | `author` | no | The author's name. No email: the list is public. |
 | `license` | no | An SPDX id, such as `MIT`. |
 | `repository` | no | An `https:` URL to the source code. |
 | `icons` | no | `{ "src", "theme" }` with an `https:` `src`, and `theme` `light` or `dark`. A version's own `ahpd.icons` replace these once plugins.ahpio.com reads it. |
 
-Do not write `versions`. plugins.ahpio.com adds every release of the source by itself: each npm version, or each `v<X.Y.Z>` tag of a GitHub repo. A prerelease, such as `1.0.0-rc.1`, is not listed.
+Do not write `versions`. plugins.ahpio.com adds every release of the source by itself: each npm version, or each `v<X.Y.Z>` tag of a GitHub repo. A prerelease, such as `1.0.0-rc.1`, is not listed. A version deprecated on npm stays listed with npm's message, and ahpd does not install it.
 
 ## What the check refuses
 
