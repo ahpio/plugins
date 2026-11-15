@@ -1,0 +1,35 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      # A pull request from a fork lists a plugin, so it changes plugins.json and nothing else.
+      - name: A fork changes plugins.json only
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        run: |
+          changed=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD")
+          other=$(printf '%s\n' "$changed" | grep -v '^plugins\.json$' || true)
+          if [ -n "$other" ]; then
+            echo "A listing changes plugins.json only. This pull request also changes:"
+            printf '  %s\n' $other
+            exit 1
+          fi
+      - run: node --test "scripts/*.test.mjs"
+      - run: node scripts/check.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

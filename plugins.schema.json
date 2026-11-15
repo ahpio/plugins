@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ahpio/plugins/blob/main/plugins.schema.json",
+  "title": "ahpd plugin list",
+  "description": "The plugins an ahpd admin can find and install. plugins.ahpio.com adds each plugin's versions and serves the result at https://plugins.ahpio.com/v1/plugins.json.",
+  "type": "object",
+  "required": ["version", "plugins"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1, "description": "The version of this format." },
+    "plugins": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/plugin" }
+    }
+  },
+  "$defs": {
+    "url": { "type": "string", "pattern": "^https://[^\\s]+$" },
+    "plugin": {
+      "type": "object",
+      "required": ["id", "name", "description", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "The plugin's id: its package name without the scope."
+        },
+        "name": { "type": "string", "minLength": 1, "maxLength": 60, "description": "The display name, as ahpd.title in package.json." },
+        "description": { "type": "string", "minLength": 1, "maxLength": 200, "description": "One sentence for the card." },
+        "source": {
+          "type": "string",
+          "pattern": "^(?:(?:@[a-z0-9][a-z0-9._-]*/)?[a-z0-9][a-z0-9._-]*|github:[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)$",
+          "description": "An npm name with no version, or github:<owner>/<repo>."
+        },
+        "categories": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "description": "The same words as ahpd.categories, such as agent or connector."
+        },
+        "author": { "type": "string", "minLength": 1 },
+        "license": { "type": "string", "minLength": 1, "description": "An SPDX id, such as MIT." },
+        "repository": { "$ref": "#/$defs/url" },
+        "icons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["src"],
+            "additionalProperties": false,
+            "properties": {
+              "src": { "$ref": "#/$defs/url" },
+              "theme": { "enum": ["light", "dark"] }
+            }
+          }
+        }
+      }
+    }
+  }
+}

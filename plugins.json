@@ -1,0 +1,240 @@
+{
+  "$schema": "./plugins.schema.json",
+  "version": 1,
+  "plugins": [
+    {
+      "id": "agent-acp",
+      "name": "Agent ACP",
+      "description": "Connects any ACP-compatible agent, including Copilot, Codex, Gemini, and custom ACP servers.",
+      "source": "@ahpd/agent-acp",
+      "categories": [
+        "agent"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/agent-acp",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/agent-acp/icon.svg",
+          "theme": "light"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/agent-acp/icon-dark.svg",
+          "theme": "dark"
+        }
+      ]
+    },
+    {
+      "id": "activepieces",
+      "name": "Activepieces connectors",
+      "description": "Each installed Activepieces piece is an adapter, and each of its actions is a host tool.",
+      "source": "@ahpd/activepieces",
+      "categories": [
+        "connector"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/activepieces",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/activepieces/icon.svg"
+        }
+      ]
+    },
+    {
+      "id": "agent-claude",
+      "name": "Agent Claude",
+      "description": "Claude Code as an agent backend, one record per configuration.",
+      "source": "@ahpd/agent-claude",
+      "categories": [
+        "agent"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/agent-claude",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/agent-claude/icon.svg"
+        }
+      ]
+    },
+    {
+      "id": "agent-cofold",
+      "name": "Agent Cofold",
+      "description": "Runs the Cofold agent runtime, providing access to OpenAI-compat api endpoints.",
+      "source": "@ahpd/agent-cofold",
+      "categories": [
+        "agent"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/agent-cofold",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/agent-cofold/icon.svg",
+          "theme": "light"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/agent-cofold/icon-dark.svg",
+          "theme": "dark"
+        }
+      ]
+    },
+    {
+      "id": "agent-pi",
+      "name": "Agent pi",
+      "description": "Runs the Pi coding agent, embedded in process and served as an agent provider.",
+      "source": "@ahpd/agent-pi",
+      "categories": [
+        "agent"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/agent-pi",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/agent-pi/icon.svg"
+        }
+      ]
+    },
+    {
+      "id": "bot",
+      "name": "Bot",
+      "description": "Creates conversational bots with individual identities, workspaces, and persistent sessions.",
+      "source": "@ahpd/bot",
+      "categories": [
+        "agent",
+        "channel",
+        "tool"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/bot",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/bot/icon.svg",
+          "theme": "light"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/bot/icon-dark.svg",
+          "theme": "dark"
+        }
+      ]
+    },
+    {
+      "id": "computer",
+      "name": "Computer",
+      "description": "Provides isolated Docker/Container environments for agent sessions, including lifecycle management and tools.",
+      "source": "@ahpd/computer",
+      "categories": [
+        "channel",
+        "tool"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/computer",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/computer/icon.svg",
+          "theme": "light"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/computer/icon-dark.svg",
+          "theme": "dark"
+        }
+      ]
+    },
+    {
+      "id": "push",
+      "name": "Push",
+      "description": "Delivers push notifications to connected devices when agent sessions require user attention.",
+      "source": "@ahpd/push",
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/push",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/push/icon.svg",
+          "theme": "light"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/push/icon-dark.svg",
+          "theme": "dark"
+        }
+      ]
+    },
+    {
+      "id": "tasks",
+      "name": "Tasks",
+      "description": "One list of tasks and plans every agent reads and writes.",
+      "source": "@ahpd/tasks",
+      "categories": [
+        "channel",
+        "tool"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/tasks",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/tasks/icon.svg",
+          "theme": "light"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/tasks/icon-dark.svg",
+          "theme": "dark"
+        }
+      ]
+    },
+    {
+      "id": "tunnel-devtunnel",
+      "name": "Dev Tunnel",
+      "description": "A Dev Tunnel that forwards the bound port, so a client reaches the daemon from anywhere.",
+      "source": "@ahpd/tunnel-devtunnel",
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/tunnel-devtunnel",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/tunnel-devtunnel/icon.svg",
+          "theme": "light"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/tunnel-devtunnel/icon-dark.svg",
+          "theme": "dark"
+        }
+      ]
+    },
+    {
+      "id": "webhook",
+      "name": "Webhook",
+      "description": "A URL that talks to a bot or fires an automation, with a secret per endpoint.",
+      "source": "@ahpd/webhook",
+      "categories": [
+        "connector"
+      ],
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/ahpio/ahpd/tree/main/packages/webhook",
+      "icons": [
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/webhook/icon.svg",
+          "theme": "light"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ahpio/ahpd/main/packages/webhook/icon-dark.svg",
+          "theme": "dark"
+        }
+      ]
+    },
+    {
+      "id": "web",
+      "name": "Web",
+      "description": "A web UI for an AHP server, as an ahpd plugin or on its own with ahpw serve",
+      "source": "@ahpd/web",
+      "author": "Softov",
+      "license": "MIT",
+      "repository": "https://github.com/softov/ahpw"
+    }
+  ]
+}
