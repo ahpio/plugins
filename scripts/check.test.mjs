@@ -79,16 +79,16 @@ test('an id that is not the package name is refused', async () => {
 });
 
 test('a github: source with no version tag is told to push one', async () => {
-  const entry = { id: 'web', name: 'Web', description: 'A web UI.', source: 'github:softov/ahpw' };
-  const fetch = stub({ 'https://api.github.com/repos/softov/ahpw/tags?per_page=100': [200, [{ name: 'v0.9.0-rc.1', commit: { sha: 'a' } }, { name: 'nightly', commit: { sha: 'b' } }]] });
+  const entry = { id: 'web', name: 'Web', description: 'A web UI.', source: 'github:ahpio/ahpw' };
+  const fetch = stub({ 'https://api.github.com/repos/ahpio/ahpw/tags?per_page=100': [200, [{ name: 'v0.9.0-rc.1', commit: { sha: 'a' } }, { name: 'nightly', commit: { sha: 'b' } }]] });
   assert.deepEqual(await sourceProblems(entry, { fetch }), ['has no version tag; push a tag such as v1.0.0, and run the check again']);
 });
 
 test('a github: source reads the id from the newest tag', async () => {
-  const entry = { id: 'web', name: 'Web', description: 'A web UI.', source: 'github:softov/ahpw' };
+  const entry = { id: 'web', name: 'Web', description: 'A web UI.', source: 'github:ahpio/ahpw' };
   const fetch = stub({
-    'https://api.github.com/repos/softov/ahpw/tags?per_page=100': [200, [{ name: 'v0.7.1', commit: { sha: 'old' } }, { name: 'v0.8.0', commit: { sha: 'new' } }]],
-    'https://raw.githubusercontent.com/softov/ahpw/new/package.json': [200, { name: '@ahpd/web' }],
+    'https://api.github.com/repos/ahpio/ahpw/tags?per_page=100': [200, [{ name: 'v0.7.1', commit: { sha: 'old' } }, { name: 'v0.8.0', commit: { sha: 'new' } }]],
+    'https://raw.githubusercontent.com/ahpio/ahpw/new/package.json': [200, { name: '@ahpd/web' }],
   });
   assert.deepEqual(await sourceProblems(entry, { fetch }), []);
 });
